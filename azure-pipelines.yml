@@ -20,6 +20,12 @@ steps:
     backendServiceAWS: 'service-connection-nca'
     backendAWSBucketName: 'terraform-bucket-nca'
     backendAWSKey: 'kubernetes-dev.tfstate'
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
+    environmentServiceNameAWS: 'service-connection-nca'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
